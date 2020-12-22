@@ -6,9 +6,9 @@
         v-for="(item, index) in recommend"
         :key="index"
         class="recommend-item">
-        <a :href="item.link">
-          <img :src="item.image" alt="" />
-        </a>
+        <!-- <a :href="item.link"> -->
+          <img :src="item.image" alt="" @click="linkClick" />
+        <!-- </a> -->
         <div>{{ item.title }}</div>
       </div>
     </div>
@@ -17,9 +17,9 @@
         v-for="(item, index) in recommend1"
         :key="index"
         class="recommend-item">
-        <a :href="item.link">
-          <img :src="item.image" alt="" />
-        </a>
+        <!-- <a :href="item.link"> -->
+          <img :src="item.image" alt="" @click="linkClick" />
+        <!-- </a> -->
         <div>{{ item.title }}</div>
       </div>
     </div>
@@ -42,6 +42,11 @@ export default {
         return [];
       },
     },
+  },
+  methods: {
+    linkClick() {
+      this.$router.push('/lemon')
+    }
   },
 };
 </script>
@@ -74,10 +79,10 @@ export default {
   height: 70px;
   margin-bottom: 10px;
 }
-.recommend .recommend-item a img {
+.recommend .recommend-item  img {
   border-radius: 50%;
 }
-.recommend1 .recommend-item a img {
+.recommend1 .recommend-item  img {
   border-radius: 50%;
 }
 </style>

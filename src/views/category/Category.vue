@@ -1,15 +1,26 @@
 <template>
   <div id="category">
-    <h2>分类页</h2>
+    <van-search v-model="value" placeholder="榴莲蛋糕" input-align="center" class="search" />
+    <category-menu></category-menu>
   </div>
 </template>
 
 <script>
+import CategoryMenu from "./childComps/CategoryMenu";
+
+
 export default {
-  name:'Category'
-}
+  name: "Category",
+  components: {
+    CategoryMenu,
+  },
+  data() {
+    return {
+      value: "",
+    };
+  },
+};
 </script>
 
 <style scoped>
-
 </style>

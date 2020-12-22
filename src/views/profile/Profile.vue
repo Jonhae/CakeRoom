@@ -31,7 +31,7 @@ export default {
         { title: '会员卡', icon: require('assets/img/profile/vip.svg') }
       ],
       appList: [
-        { title: '收货人地址管理', icon: require('assets/img/profile/cart.svg') },
+        { title: '收货人地址管理', icon: require('assets/img/profile/adress.svg') },
         { title: '关于蛋糕屋', icon: require('assets/img/profile/shopping.svg') }
       ]
     }

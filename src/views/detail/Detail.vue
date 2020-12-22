@@ -16,6 +16,7 @@
     </scroll>
     <detail-bottom-bar @addToCart="addToCart"></detail-bottom-bar>
     <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
+    <toast :message='message' :isShow="show" />
   </div>
 </template>
 
@@ -32,6 +33,7 @@ import DetailBottomBar from "./childComps/DetailBottomBar";
 
 import Scroll from "components/common/scroll/Scroll";
 import BackTop from "components/content/backTop/BackTop";
+import Toast from "components/common/toast/Toast"
 
 import { getDetail, Goods, GoodsParam, getRecommend} from "../../network/detaili";
 import { debounce } from "common/utils";
@@ -51,9 +53,9 @@ export default {
     DetailRecommend,
     GoodsList,
     DetailBottomBar,
-    BackTop,
-
     Scroll,
+    BackTop,
+    Toast,
   },
   data() {
     return {
@@ -68,6 +70,8 @@ export default {
       getThemeTopYs:null,
       currentIndex:0,
       isShowBackTop:false,
+      message:'',
+      show:false
     };
   },
   created() {
@@ -179,14 +183,13 @@ export default {
 
 
       addToCart() {
-        console.log(12121);
-      // 1.获取购物车需要展示的信息
-      const product = {}
-      product.image = this.topImages[0]
-      product.title = this.goods.title
-      product.desc = this.goods.desc
-      product.newPrice = this.goods.oldPrice
-      product.iid = this.iid
+        // 1.获取购物车需要展示的信息
+        const product = {}
+        product.image = this.topImages[0]
+        product.title = this.goods.title
+        product.desc = this.goods.desc
+        product.newPrice = this.goods.realprice
+        product.iid = this.iid
 
       //2.将商品添加到购物车里
       //Toast方法一：

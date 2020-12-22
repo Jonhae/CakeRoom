@@ -10,6 +10,9 @@ module.exports = {
                 'views': '@/views',
             }
         },
+        devServer: {
+            proxy: 'http://152.136.185.210:8000/api/w6'
+        }
         // dev: {
         //     env: require('./dev.env'),
         //     port: 8090,

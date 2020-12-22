@@ -11,7 +11,9 @@
     <scroll class="content"
             ref="scroll"
             :probe-type='3' 
-            @scroll="contentScroll"> 
+            @scroll="contentScroll"
+            :pull-up-load='true'
+            @pullingUp="loadMore"> 
       <home-swiper :banners="banners" @swiperImgLoad="swiperImgLoad"></home-swiper>
       <feature :recommend2="recommend2"></feature>
       <recommend-view :recommend="recommend" :recommend1="recommend1"></recommend-view>
@@ -134,6 +136,10 @@ export default {
       // 2.决定TabControl是否吸顶（position:fixed）
       this.isTabFixed = -(position.y) > this.tabOffsetTop
     },
+    //下拉加载
+    loadMore() {
+      this.getHomeGoods(this.currentType)
+    },
     swiperImgLoad() {
       // 获取tabControl的offsetTop
       // 所有的组件都有一个属性$el：用于获取组件中的元素
@@ -144,6 +150,7 @@ export default {
      */
     getHomeMultidata() {
       getHomeMultidata().then((res) => {
+        //console.log(res);
         this.banners = res.data.data.banner.list;
         this.recommend = res.data.data.recommend.list;
         this.recommend1 = res.data.data.recommend1.list;
@@ -161,7 +168,7 @@ export default {
         // 上面追加了一页数据，所以要+1 
         this.goods[type].page += 1;
 
-        //this.$refs.scroll.scroll.finishPullUp();
+        this.$refs.scroll.scroll.finishPullUp();
       });
     },
   },

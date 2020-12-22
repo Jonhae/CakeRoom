@@ -1,7 +1,7 @@
 <template>
   <div id="cart">
     <nav-bar class="nav-bar">
-      <template v-slot:center><div class="shop-center">购物车{{cartLength}}</div></template>
+      <template v-slot:center><div class="shop-center">购物车</div></template>
       <template v-slot:right><div>编辑</div></template>
     </nav-bar>
     <scroll class="content" ref="scroll">

@@ -22,7 +22,7 @@ export default {
                 // 添加一个新属性checked
                 payload.checked = true
                 context.commit('addToCart', payload)
-                resolve('添加了新的商品')
+                resolve('成功添加到购物车')
             }
         })
     }

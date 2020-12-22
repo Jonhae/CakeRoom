@@ -7,6 +7,7 @@ import Vant from 'vant';
 import 'vant/lib/index.css';
 Vue.use(Vant);
 
+
 //事件总线
 Vue.prototype.$bus = new Vue()
 

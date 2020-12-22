@@ -11,7 +11,7 @@
         </div>
 
         <div class="calculate" @click="calcClick">
-            去计算：{{checkLength}}
+            去结算：{{checkLength}}
         </div>
     </div>  
 </template>
@@ -63,7 +63,11 @@ export default {
       },
 
       calcClick() {
-          
+          if (this.checkLength === 0) {
+               this.$toast('请选择商品');
+          } else {
+              this.$toast('支付成功')
+          }
       }
   },
 };
@@ -74,25 +78,26 @@ export default {
   height: 40px;
   background-color: #eee;
   position: relative;
-  bottom: 40px;
+  bottom: 36px;
   display: flex;
 }
 .check-content {
     display: flex;
     align-items: center;
-    margin-left: 10px;
-    width: 60px;
+    margin-left: 1px;
+    width: 70px;
 }
 .check-button {
     margin-right: 5px;
 }
 .totalPrice {
-    margin-left: 30px;
+    margin-left: 50px;
     padding-top: 11.5px;
     flex: 1;
 }
 .calculate {
-    width: 80px;
+    width: 90px;
+    text-align: center;
     padding-top: 11.5px;
     background-color: red;
     color: #fff;

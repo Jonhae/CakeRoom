@@ -1,9 +1,9 @@
 <template>
   <div class="recommend2">
     <div v-for="(item, index) in recommend2" :key="index" class="recommend-item2">
-      <a :href="item.link">
-        <img :src="item.image" alt="" />
-      </a>
+      <!-- <a :href="item.link"> -->
+        <img :src="item.image" alt="" @click="itemClick" />
+      <!-- </a> -->
       <div>{{ item.title }}</div>
     </div>
   </div>
@@ -19,6 +19,11 @@ export default {
         return [];
       },
     },
+  },
+  methods: {
+    itemClick() {
+      this.$router.push('/fruittart')
+    }
   },
 };
 </script>
@@ -39,7 +44,7 @@ export default {
   height: 70px;
   margin-bottom: 10px;
 }
-.recommend2 .recommend-item2 a img {
+.recommend2 .recommend-item2 img {
   border-radius: 50%;
 }
 </style>

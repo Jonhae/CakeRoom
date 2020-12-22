@@ -3,11 +3,25 @@ import axios from 'axios'
 export function request(config) {
     const instance = axios.create({
         //baseURL: 'http://152.136.185.210:8000/api/w6',
+        //wifi
         baseURL: 'http://192.168.0.105:8080',
-        //baseURL: 'http://163m2u6284.zicp.vip:80',
-        //baseURL: 'http://192.168.60.169:8080',
-       //baseURL: 'http://39.106.161.38:8081',
-        timeout: 20000
+        //服务器
+        //baseURL: 'http://39.106.161.38:8081',
+        timeout: 50000,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+        },
+        transformRequest: [
+            data => {
+              // data 就是你post请求传的值
+              // 一下主要是吧数据拼接成 类似get格式
+              let params = ''
+              for (var index in data) {
+                params += index + '=' + data[index] + '&'
+              }
+              return params
+            }
+          ]
     })
 
     instance.interceptors.request.use(config => {

@@ -10,9 +10,9 @@
   </div> -->
     <swiper>
     <swiper-item v-for="(item, index) in banners" :key="index">
-      <a :href="item.link">
-        <img :src="item.image" alt="" @load="imgLoad" />
-      </a>
+      <!-- <a :href="item.link"> -->
+        <img :src="item.image" alt="" @load="imgLoad" @click="linkClick"/>
+      <!-- </a> -->
     </swiper-item>
   </swiper>
 </template>
@@ -47,6 +47,9 @@ export default {
         this.isLoad = true;
       }
     },
+    linkClick() {
+      this.$router.push('/cookies')
+    }
   },
 };
 </script>
