@@ -131,7 +131,7 @@ export default {
       //console.log(position);
       // 因为默认是负值，所以取正
       // 1.判断BackTop是否显示
-      this.isShowBackTop = -(position.y) > 1000
+      this.isShowBackTop = -(position.y) > 700
 
       // 2.决定TabControl是否吸顶（position:fixed）
       this.isTabFixed = -(position.y) > this.tabOffsetTop
@@ -169,6 +169,7 @@ export default {
         this.goods[type].page += 1;
 
         this.$refs.scroll.scroll.finishPullUp();
+        
       });
     },
   },

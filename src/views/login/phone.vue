@@ -2,48 +2,37 @@
   <div id="service">
     <h2>登录</h2>
     <p class="welcome">欢迎来到蛋糕屋！</p>
-    <van-field v-model="email" placeholder="请输入邮箱"  class="van-tel" clearable />
-    <van-field v-model="sms" center clearable  placeholder="请输入邮箱验证码" class="van-sms" >
+    <van-field v-model="phone" placeholder="请输入手机号码"  class="van-tel" clearable />
+    <van-field v-model="sms" center clearable  placeholder="请输入短信验证码" class="van-sms" >
         <template #button>
             <van-button :disabled='disabled' size="small" type="primary" class="van-button" @click="verifyClick">{{btnTitle}}</van-button>
         </template>
     </van-field>
     <button class="button" @click="registerClick">登录</button>
-    <p class="usepass" @click="usepassClick">使用密码登录</p>
+    <p class="usepass" @click="usepassClick">使用邮箱登录</p>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 
-import {getEmail} from '../../network/login'
-
 export default {
-  name: "Login",
+  name: "LoginPassword",
   data() {
     return {
-      email: "",
+      phone: "",
       sms: "",
       btnTitle:'获取验证码',
       disabled: false,
-      qq:'',
-      isLogin:false,
+      numCode:'',
     };
-  },
-  created() {
-    
   },
   methods: {
     //获取验证码
     verifyClick() {
       if (this.validatePhone()) {
-        //倒计时
-        this.validateBtn()
         // 如果合法的话发送网络请求
-        getEmail(this.email).then((res) => {
-        console.log(res);
-        this.qq = res.data
-     })
+        this.validateBtn();
       }
     },
     // 发送验证码与倒计时
@@ -61,15 +50,21 @@ export default {
            time--;
         }
       },1000)
+      for (var i = 0; i < 4; i++) {
+        this.numCode += Math.floor(Math.random() * 10);
+      }
+      console.log(this.numCode);
     },
-    // 验证邮箱号码
+    // 验证手机号码
     validatePhone() {
-      if (!this.email) {
-        this.$toast('QQ邮箱不能为空')
+      if (!this.phone) {
+        this.$toast('手机号码不能为空')
         return false;
-      } else if (!/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.email)) {
-        this.$toast('请填写正确的邮箱号')
+
+      } else if (!/^1[345678]\d{9}$/.test(this.phone)) {
+        this.$toast('请填写正确的手机号')
         return false
+        
       } else {
         return true;
       }
@@ -78,27 +73,22 @@ export default {
     registerClick() {
       if (this.sms === '' ) {
         
-      } else if(this.sms != this.qq) {
+      } else if(this.sms != this.numCode) {
         this.$toast('验证码错误')
       } else {
         // 登录更改信息
-        this.$bus.$emit('change',this.email)
-        // 传值到更改用户名组件
-        sessionStorage.setItem('username',this.email)
+        //this.$bus.$emit('change',this.phone)
         // 登录跳转页面
-        this.$toast('登录成功')
         this.$router.push('/profile')
-        // 登录成功发送一个true，可以使用某些功能了
-        this.isLogin = true;
-        this.$bus.$emit('ifLogin',this.isLogin)
       }
     },
 
-    // 使用手机登录
+    // 使用密码登录
     usepassClick() {
-      this.$router.push('/loginPassword')
+      this.$router.push('/login')
     },
-    
+
+
   }
 };
 </script>

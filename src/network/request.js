@@ -2,11 +2,10 @@ import axios from 'axios'
 
 export function request(config) {
     const instance = axios.create({
-        //baseURL: 'http://152.136.185.210:8000/api/w6',
-        //wifi
-        baseURL: 'http://192.168.0.105:8080',
+        //本地
+        //baseURL: 'http://192.168.0.105:8080',
         //服务器
-        //baseURL: 'http://39.106.161.38:8081',
+        baseURL: 'http://39.106.161.38:8081',
         timeout: 50000,
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'

@@ -50,8 +50,8 @@
             v-if="active === 2"
             src="https://www.dangao.com/imgbanner/new_class_Flower.jpg" >
             <div>
-              <p class="text"><pre>——  按对象  ——</pre></p>
-              
+              <p class="text"><pre>——  按用途  ——</pre></p>
+              <category-content :recommend="flowerBasket"></category-content>
             </div>
         </van-image>
         <!-- 巧克力 -->
@@ -60,7 +60,6 @@
             v-if="active === 3"
             src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608453154859&di=406b471c45b6ac4e5e676347cdc5becf&imgtype=0&src=http%3A%2F%2Fpic3.16pic.com%2F00%2F58%2F45%2F16pic_5845136_b.jpg" >
             <div>
-              <p class="text"><pre>——  按对象  ——</pre></p>
               
             </div>
         </van-image>
@@ -107,6 +106,7 @@ export default {
         recommend2:[],
         recommend3:[],
         flower1:[],
+        flowerBasket:[],
     };
   },
   created() {
@@ -125,6 +125,7 @@ export default {
         this.flower = res.data.data.flower;
         this.flower1 = res.data.data.flower1;
         this.flower2 = res.data.data.flower2;
+        this.flowerBasket = res.data.data.flowerBasket
         //console.log(res);
       });
     },

@@ -8,6 +8,9 @@
       <cart-list />
     </scroll>
     <cart-bottom-bar></cart-bottom-bar>
+    <!-- <van-submit-bar :price="3050" button-text="提交订单" >
+      <van-checkbox v-model="checked">全选</van-checkbox>
+    </van-submit-bar> -->
   </div>
 </template>
 
@@ -29,7 +32,7 @@ export default {
   },
   data() {
     return {
-      
+      // checked:true,
     }
   },
   computed:{
@@ -45,6 +48,11 @@ export default {
 </script>
 
 <style scoped>
+.nav-bar {
+  position: relative;
+  z-index: 9;
+  background-color: #fff;
+}
 .shop-center {
   font-size: 20px;
   color: #000;

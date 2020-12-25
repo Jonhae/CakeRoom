@@ -48,6 +48,7 @@ export default {
   display: flex;
   padding: 5px;
   border-bottom: 1px solid #ccc;
+  background-color: #fff
 }
 
 .item-selector {

@@ -24,6 +24,11 @@ export default {
   components: {
     CheckButton,
   },
+  data() {
+      return {
+          isLogins:'',
+      }
+  },
   computed:{
       totalPrice() {
           return '￥' + this.$store.state.cartList.filter(item => {
@@ -63,11 +68,32 @@ export default {
       },
 
       calcClick() {
-          if (this.checkLength === 0) {
-               this.$toast('请选择商品');
-          } else {
-              this.$toast('支付成功')
-          }
+        //   if (this.checkLength === 0) {
+        //        this.$toast('请选择商品');
+        //   } else {
+        //       this.$bus.$on("ifLogin",(isLogin)=>{
+        //           this.isLogins = isLogin
+        //       })
+        //       if (this.isLogins){
+        //           this.$toast('支付成功')
+        //       } else {
+        //           this.$router.push('login')
+        //       }
+        //   }
+
+            // 未登录跳转到登录页才可以执行操作结算
+            this.$bus.$on("ifLogin",(isLogin)=>{
+                  this.isLogins = isLogin
+            })
+            if (this.isLogins) {
+                if (this.checkLength === 0) {
+                    this.$toast('请选择商品');
+                } else {
+                    this.$toast('支付成功')
+                }
+            } else {
+                this.$router.push('login')
+            }
       }
   },
 };

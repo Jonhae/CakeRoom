@@ -1,6 +1,6 @@
 <template>
   <div id="fuuit-tart">
-      <scroll class="content" ref="scroll">
+      <scroll class="content" ref="scroll" @scroll="contentScroll" :probe-type='3'>
       <div class="logo">
           <img src="http://www.rabbitbake.com/wp-content/uploads/2015/03/tuzi01.png" alt="">
       </div>
@@ -22,6 +22,7 @@
           <p class="p6">E-mail：Sea@gmail.com</p>
       </div>
       </scroll>
+      <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
   </div>
 </template>
 
@@ -29,12 +30,14 @@
 import Scroll from '../components/common/scroll/Scroll'
 
 import { debounce } from '../common/utils'
+import {backTopMixin} from '../common/mixin'
 
 export default {
     name:'Fruittart',
     components:{
         Scroll,
     },
+    mixins:[backTopMixin],
     data() {
         return {
             image:['http://www.rabbitbake.com/wp-content/uploads/2015/09/IMG_1745.jpg',

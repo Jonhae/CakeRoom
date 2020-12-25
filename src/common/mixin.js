@@ -32,8 +32,11 @@ export const backTopMixin = {
     }
   },
   methods: {
-    backTop() {
+    backClick() {
       this.$refs.scroll.scrollTo(0, 0, 500)
-    }
+    },
+    contentScroll(position) {
+      this.isShowBackTop = -(position.y) > 500
+    },
   },
 }
