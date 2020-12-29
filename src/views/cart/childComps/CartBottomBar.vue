@@ -82,17 +82,14 @@ export default {
         //   }
 
             // 未登录跳转到登录页才可以执行操作结算
-            this.$bus.$on("ifLogin",(isLogin)=>{
-                  this.isLogins = isLogin
-            })
-            if (this.isLogins) {
+            if (this.$store.state.isLogins) {
                 if (this.checkLength === 0) {
                     this.$toast('请选择商品');
                 } else {
                     this.$toast('支付成功')
                 }
             } else {
-                this.$router.push('login')
+                this.$toast('登录后执行相关操作')
             }
       }
   },

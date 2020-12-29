@@ -65,7 +65,7 @@ export default {
     // 验证邮箱号码
     validatePhone() {
       if (!this.email) {
-        this.$toast('QQ邮箱不能为空')
+        this.$toast('邮箱不能为空')
         return false;
       } else if (!/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.email)) {
         this.$toast('请填写正确的邮箱号')
@@ -90,6 +90,9 @@ export default {
         this.$router.push('/profile')
         // 登录成功发送一个true，可以使用某些功能了
         this.isLogin = true;
+        // 在vuex仓库存储一个是否登录值
+        this.$store.state.isLogins = true
+        //console.log(this.$store.state.isLogins);
         this.$bus.$emit('ifLogin',this.isLogin)
       }
     },

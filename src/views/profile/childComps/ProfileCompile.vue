@@ -20,6 +20,20 @@
         <div class="s2"><img src="~assets/img/profile/right arrow.png"></div>
     </div>
 
+    <p class="tel-info">账号绑定</p>
+    <div class="username">
+        <div class="s1">手机</div>
+        <div class="s2">未绑定</div>
+    </div>
+    <div class="username">
+        <div class="s1">微信</div>
+        <div class="s2">未绑定</div>
+    </div>
+    <div class="username">
+        <div class="s1">QQ</div>
+        <div class="s2">未绑定</div>
+    </div>
+
   </div>
 </template>
 
@@ -62,7 +76,11 @@ export default {
 }
 .basic-info {
     font-size: 15px;
-    margin: 25px 0 25px 15px;
+    margin: 25px 0 25px 10px;
+}
+.tel-info {
+    font-size: 15px;
+    margin: 35px 0 10px 10px;
 }
 .username {
     width: 100%;
@@ -85,4 +103,5 @@ export default {
     width: 20px;
     height: 20px;
 }
+
 </style>

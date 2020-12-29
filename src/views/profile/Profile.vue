@@ -2,10 +2,13 @@
   <div id="profile">
     <profile-base-info></profile-base-info>
     <profile-bar></profile-bar>
-    <div class="user-item">
+    <div class="user-item" @click="userItemClcik">
       <profile-tool-item v-for="(item,index) in userList" :key="index" :tool-info="item"></profile-tool-item>
     </div>
-    <div class="app-item">
+    <div class="adress-item" @click="adressClick">
+      <profile-tool-item v-for="(item,index) in adressList" :key="index" :tool-info="item"></profile-tool-item>
+    </div>
+    <div class="app-item" @click="appClick">
       <profile-tool-item v-for="(item,index) in appList" :key="index" :tool-info="item"></profile-tool-item>
     </div>
   </div>
@@ -30,10 +33,30 @@ export default {
         { title: '积分商城', icon: require('assets/img/profile/pointer.svg') },
         { title: '会员卡', icon: require('assets/img/profile/vip.svg') }
       ],
-      appList: [
+      adressList: [
         { title: '收货人地址管理', icon: require('assets/img/profile/adress.svg') },
+      ],
+      appList: [
         { title: '关于蛋糕屋', icon: require('assets/img/profile/shopping.svg') }
-      ]
+      ],
+    }
+  },
+  methods: {
+    userItemClcik() {
+      if(this.$store.state.isLogins) {
+      } else {
+        this.$toast('登录执行相关操作')
+      }
+    },
+    appClick() {
+      this.$router.push('/aboutApp')
+    },
+    adressClick() {
+      if(this.$store.state.isLogins) {
+        this.$router.push('/addresslist')
+      } else {
+        this.$toast('登录执行相关操作')
+      }
     }
   },
 };

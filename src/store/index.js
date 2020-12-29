@@ -11,6 +11,9 @@ Vue.use(Vuex)
 
 const state = {
   cartList:[],
+  isLogins:'',
+  adressInfo:'',
+  addressPush:'',
 }
 
 const store = new Vuex.Store({
@@ -21,5 +24,5 @@ const store = new Vuex.Store({
   }
 })
 
-// 3.挂在在Vue实例上
+// 3.挂载在Vue实例上
 export default store

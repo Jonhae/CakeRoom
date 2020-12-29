@@ -13,6 +13,8 @@ const LoginPassword = () => import('../views/login/loginPassword.vue')
 const Compile = () => import('../views/profile/childComps/ProfileCompile.vue')
 const UserName = () => import('../views/profile/childComps/UserName.vue')
 const AddressList = ()=> import('../views/profile/childComps/AddressList.vue')
+const AboutApp = ()=> import('../views/profile/childComps/AboutApp.vue')
+const AdressEdit = ()=> import('../views/profile/childComps/AdressEdit.vue')
 
 // link
 const FruitTart = () => import('../link/FuritTart.vue')
@@ -20,6 +22,12 @@ const Cookies = () => import('../link/Cookies.vue')
 const Lemon = () => import('../link/Lemon.vue')
 
 Vue.use(VueRouter)
+
+// 解决路由跳转错误
+const originalPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push (location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 
 const routes = [
   {
@@ -57,6 +65,10 @@ const routes = [
 
   },
   {
+    path:'/addressEdit',
+    component: AdressEdit,
+  },
+  {
     //params动态路由传参，:后面的id要与push传的一致
     path: '/detail/:iid',
     component: Detail
@@ -69,6 +81,11 @@ const routes = [
   {
     path: '/loginpassword',
     component: LoginPassword
+  },
+    // 关于app
+  {
+    path: '/aboutApp',
+    component: AboutApp,
   },
   // link
   {

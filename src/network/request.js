@@ -6,11 +6,13 @@ export function request(config) {
         //baseURL: 'http://192.168.0.105:8080',
         //服务器
         baseURL: 'http://39.106.161.38:8081',
+        //热点
+        //baseURL: 'http://192.168.43.169:8080',
         timeout: 50000,
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
         },
-        transformRequest: [
+        transformRequest: [ 
             data => {
               // data 就是你post请求传的值
               // 一下主要是吧数据拼接成 类似get格式

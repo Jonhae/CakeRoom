@@ -56,11 +56,11 @@
         </van-image>
         <!-- 巧克力 -->
         <van-image
-            class="imgage"
+            class="none-product"
             v-if="active === 3"
             src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1608453154859&di=406b471c45b6ac4e5e676347cdc5becf&imgtype=0&src=http%3A%2F%2Fpic3.16pic.com%2F00%2F58%2F45%2F16pic_5845136_b.jpg" >
             <div>
-              
+              <p class="text">暂无该产品</p>
             </div>
         </van-image>
         <!-- 果篮 -->
